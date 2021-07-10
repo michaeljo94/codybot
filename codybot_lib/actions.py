@@ -16,8 +16,8 @@ class BaseAction:
         raise NotImplemented
 
 
-class AnswerAction(BaseAction):
-    command_name = "AnswerAction"
+class SimpleResponseAction(BaseAction):
+    command_name = "SimpleResponseAction"
     command_trigger = "!answerAction"
 
     @log
@@ -27,7 +27,7 @@ class AnswerAction(BaseAction):
         if message.author == client.user: return
 
         if message.content == self.command_trigger:
-            await message.channel.send(self.get_message(client, *args, **kwargs))
+            await message.channel.send(self.get_response(client, *args, **kwargs))
 
-    def get_message(self, client, *args, **kwargs):
-        return "You have overwrite AnswerAction.get_message()"
+    def get_response(self, client, *args, **kwargs):
+        return "You have overwrite SimpleResponseAction.get_message()"
