@@ -1,0 +1,10 @@
+version: "3.0"
+services:
+  cobybot:
+    image: michaeljo94/codybot
+    build: .
+    command: "python cobybot.py"
+    restart: unless-stopped
+    env_file:
+        - .env
+
