@@ -1,5 +1,5 @@
-from codybot_lib.bot_actions.text_response_actions import HelloAction, HelpAction, TimeAction, PussyAction, DogAction, \
-    XKCDAction
+from codybot_lib.bot_actions.simple_responses import HelloAction, HelpAction, TimeAction
+from codybot_lib.bot_actions.api_responses import PussyAction, DogAction, XKCDAction
 
 
 class ActionLoader:
@@ -23,6 +23,3 @@ class ActionLoader:
         PussyAction()
         DogAction()
         XKCDAction()
-        # package_dir = Path(__file__).resolve().parent
-        # for (_, module_name, _) in iter_modules([package_dir]):
-        #     module = import_module(f"{__name__}.")
