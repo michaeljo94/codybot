@@ -1,0 +1,2 @@
+class TooFewArgumentsException(Exception):
+    pass

@@ -1,5 +1,5 @@
 from codybot_lib.bot_actions.simple_responses import HelloAction, HelpAction, TimeAction
-from codybot_lib.bot_actions.api_responses import PussyAction, DogAction, XKCDAction, DadJokeAction
+from codybot_lib.bot_actions.api_responses import PussyAction, DogAction, XKCDAction, DadJokeAction, FukAction
 
 
 class ActionLoader:
@@ -24,3 +24,4 @@ class ActionLoader:
         DogAction()
         XKCDAction()
         DadJokeAction()
+        FukAction()

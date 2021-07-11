@@ -4,9 +4,7 @@ from codybot_lib.actions import SimpleResponseAction
 
 
 class HelloAction(SimpleResponseAction):
-    command_name = "HelloAction"
-    command_desc = "Greats the user"
-    command_trigger = "!hello"
+    command_desc = "Greets the user"
 
     def get_response(self, client, *args, **kwargs):
         message = kwargs.get("message")
@@ -14,9 +12,7 @@ class HelloAction(SimpleResponseAction):
 
 
 class HelpAction(SimpleResponseAction):
-    command_name = "HelpAction"
     command_desc = "Prints this message"
-    command_trigger = "!help"
 
     def get_response(self, client, *args, **kwargs):
         commands = "Commands:"
@@ -26,9 +22,7 @@ class HelpAction(SimpleResponseAction):
 
 
 class TimeAction(SimpleResponseAction):
-    command_name = "TimeAction"
     command_desc = "Prints time at bots location"
-    command_trigger = "!time"
 
     def get_response(self, client, *args, **kwargs):
         now = datetime.now()
