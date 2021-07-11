@@ -31,3 +31,15 @@ class XKCDAction(SimpleResponseAction):
         data = requests.get(url).json()
 
         return f"#{data.get('num')}: {data.get('title')} D:{data.get('day')}\n {data.get('img')}"
+
+class DadJokeAction(SimpleResponseAction):
+    command_name = "DadJokeAction"
+    command_desc = "Displays a Dad Joke"
+    command_trigger = "!dad"
+
+    def get_response(self, client, *args, **kwargs):
+        url = "https://icanhazdadjoke.com/"
+        data = requests.get(url, headers={"ACCEPT": "application/json"})
+        if data.status_code != 200:
+            return "Dad is not here at the moment."
+        return data.json().get("joke")
