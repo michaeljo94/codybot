@@ -3,8 +3,8 @@ from typing import List
 
 import requests
 
-from codybot_lib.actions import SimpleResponseAction
-from discord import Message
+from codybot_lib.actions import SimpleResponseAction, ParameterResponseAction
+from discord import Message, Client
 
 from codybot_lib.exeptions import TooFewArgumentsException
 
@@ -44,9 +44,13 @@ class DadJokeAction(SimpleResponseAction):
         return data.json().get("joke")
 
 
-class FukAction(SimpleResponseAction):
+class FukAction(ParameterResponseAction):
     command_desc = "Fuk of every (use `!fuk help` for more information)"
     _url = "https://www.foaas.com/"
+
+    def get_response(self, client, *args, **kwargs):
+        super().get_response(client, *args, **kwargs)
+        return "Ich habs ja überschrieben!"
 
     # def operations(self) -> List[dict]:
     #     operations = requests.get(f"{self._url}operations", headers={"ACCEPT": "application/json"}).json()
@@ -55,27 +59,3 @@ class FukAction(SimpleResponseAction):
     #
     # def operations_names(self):
     #     return (operation.name for operation in self.operations())
-
-    def _build_message_parts(self, message: Message):
-        message_splits:List[str] = message.content.strip().split(" ")
-        rv_dict = dict()
-        try:
-            for split in message_splits[2:]:
-                if ":" in split:
-                    arg, val = split.split(":")
-                    rv_dict.update({arg: val})
-        except IndexError as e:
-            raise TooFewArgumentsException
-        return rv_dict
-
-
-    def get_response(self, client, *args, **kwargs):
-        message: Message = kwargs.get("message")
-        try:
-            params = self._build_message_parts(message)
-        except TooFewArgumentsException:
-            params = dict()
-
-        print(params)
-
-        return ""

@@ -8,7 +8,6 @@ from codybot_lib.brokers import CommandBroker
 
 
 class CodyClient(Client):
-
     def __init__(self, *, loop=None, **options):
         self.broker = CommandBroker.instance(self)
         self._env_guild = os.getenv("DISCORD_GUILD")
@@ -36,10 +35,9 @@ class CodyClient(Client):
 
     async def on_member_join(self, member):
         await member.create_dm()
-        await member.dm_channel.send(
-            f"Willkommen {member.name}"
-        )
+        await member.dm_channel.send(f"Willkommen {member.name}")
 
     async def on_message(self, message):
-        if message.author == self.user: return
+        if message.author == self.user:
+            return
         await self.broker.run(message)
