@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 
 from codybot_lib.actions import SimpleResponseAction
@@ -31,6 +32,7 @@ class XKCDAction(SimpleResponseAction):
         data = requests.get(url).json()
 
         return f"#{data.get('num')}: {data.get('title')} D:{data.get('day')}\n {data.get('img')}"
+
 
 class DadJokeAction(SimpleResponseAction):
     command_name = "DadJokeAction"

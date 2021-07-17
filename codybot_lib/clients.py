@@ -1,21 +1,20 @@
+# -*- coding: utf-8 -*-
 import os
-from functools import lru_cache
 
 from discord import Client, Guild
 
-from codybot_lib.loaders import ActionLoader
 from codybot_lib.brokers import CommandBroker
+from codybot_lib.loaders import ActionLoader
 
 
 class CodyClient(Client):
-
     def __init__(self, *, loop=None, **options):
         self.broker = CommandBroker.instance(self)
         self._env_guild = os.getenv("DISCORD_GUILD")
         super().__init__(loop=loop, **options)
 
     @property
-    async def get_guild(self) -> Guild:
+    async def get_guild_by_name(self) -> Guild:
         guilds = self.guilds
         for guild in guilds:
             if guild.name == self._env_guild:
@@ -29,17 +28,16 @@ class CodyClient(Client):
         )
 
     async def on_ready(self):
-        guild = await self.get_guild
+        guild = await self.get_guild_by_name
         if guild:
             self.draw_beep(guild.name, guild.id)
         await ActionLoader.instance()
 
     async def on_member_join(self, member):
         await member.create_dm()
-        await member.dm_channel.send(
-            f"Willkommen {member.name}"
-        )
+        await member.dm_channel.send(f"Willkommen {member.name}")
 
     async def on_message(self, message):
-        if message.author == self.user: return
+        if message.author == self.user:
+            return
         await self.broker.run(message)

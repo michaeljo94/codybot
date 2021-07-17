@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 class CommandActionRegistry:
     _instance = None
     _registry_dict = {}
 
     def __init__(self):
-        raise RuntimeError('Call instance() instead')
+        raise RuntimeError("Call instance() instead")
 
     @classmethod
     def instance(cls):

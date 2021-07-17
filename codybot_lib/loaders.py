@@ -1,12 +1,18 @@
+# -*- coding: utf-8 -*-
 from codybot_lib.bot_actions.simple_responses import HelloAction, HelpAction, TimeAction
-from codybot_lib.bot_actions.api_responses import PussyAction, DogAction, XKCDAction, DadJokeAction
+from codybot_lib.bot_actions.api_responses import (
+    PussyAction,
+    DogAction,
+    XKCDAction,
+    DadJokeAction,
+)
 
 
 class ActionLoader:
     _instance = None
 
     def __init__(self):
-        raise RuntimeError('Call instance() instead')
+        raise RuntimeError("Call instance() instead")
 
     @classmethod
     async def instance(cls):
