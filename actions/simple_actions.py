@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from codybot_lib.actions import SimpleResponseAction
+from core.actions import SimpleResponseAction
 
 
 class HelloAction(SimpleResponseAction):

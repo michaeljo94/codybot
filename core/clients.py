@@ -3,8 +3,8 @@ import os
 
 from discord import Client, Guild
 
-from codybot_lib.brokers import CommandBroker
-from codybot_lib.loaders import ActionLoader
+from .brokers import CommandBroker
+from .loaders import ActionLoader
 
 
 class CodyClient(Client):

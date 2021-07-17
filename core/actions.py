@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+from abc import abstractmethod
 from typing import Coroutine, Any
 
 from discord import Message, Client
 
-from codybot_lib.decoratros import log
-from codybot_lib.parsers import CommandParser
-from codybot_lib.registries import CommandActionRegistry
+from .decoratros import log
+from .parsers import CommandParser
+from .registries import CommandActionRegistry
 
 
 class BaseAction:
@@ -21,9 +22,10 @@ class BaseAction:
         self.registry = CommandActionRegistry.instance()
         self.registry.add_action(self.command_trigger, self)
 
+    @abstractmethod
     @log
     async def run(self, client, *args, **kwargs):
-        raise NotImplemented
+        pass
 
 
 class SimpleResponseAction(BaseAction):

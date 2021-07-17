@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
-from codybot_lib.bot_actions.simple_responses import HelloAction, HelpAction, TimeAction
-from codybot_lib.bot_actions.api_responses import (
-    PussyAction,
-    DogAction,
-    XKCDAction,
-    DadJokeAction,
-)
+from importlib import import_module
+
+from .settings import SettingBuilder
 
 
 class ActionLoader:
@@ -23,10 +19,11 @@ class ActionLoader:
 
     @classmethod
     async def register_actions(cls):
-        HelloAction()
-        HelpAction()
-        TimeAction()
-        PussyAction()
-        DogAction()
-        XKCDAction()
-        DadJokeAction()
+        settings = await SettingBuilder.get_settings()
+        for action in settings.INSTALLED_ACTIONS:
+            module = ".".join(action.split(".")[:-1])
+            class_ = action.split(".")[-1]
+
+            module = import_module(module)
+            class_ = getattr(module, class_)
+            class_()

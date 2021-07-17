@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
 
-from codybot_lib.actions import SimpleResponseAction
+from core.actions import SimpleResponseAction
 
 
 class PussyAction(SimpleResponseAction):

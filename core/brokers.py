@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from discord import Message
 
-from codybot_lib.parsers import CommandParser
-from codybot_lib.registries import CommandActionRegistry
+from .parsers import CommandParser
+from .registries import CommandActionRegistry
 
 
 class CommandBroker:
