@@ -8,3 +8,4 @@ INSTALLED_ACTIONS = [
     "actions.api_actions.XKCDAction",
     "actions.api_actions.DadJokeAction",
 ]
+LOG_FILE = "cody.log"

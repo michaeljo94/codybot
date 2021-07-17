@@ -4,7 +4,8 @@ from typing import Coroutine, Any
 
 from discord import Message, Client
 
-from .decoratros import log
+from .decorators import log
+from .logging import Logger
 from .parsers import CommandParser
 from .registries import CommandActionRegistry
 
@@ -13,6 +14,7 @@ class BaseAction:
     command_name: str
     command_desc = "No Description"
     command_trigger: str
+    logger: Logger
 
     def __init__(self):
         self.command_name = self.__class__.__name__
@@ -23,12 +25,12 @@ class BaseAction:
         self.registry.add_action(self.command_trigger, self)
 
     @abstractmethod
-    @log
     async def run(self, client, *args, **kwargs):
         pass
 
 
 class SimpleResponseAction(BaseAction):
+    @log
     async def run(self, client: Client, *args, **kwargs):
         message: Message = kwargs.get("message")
         if not message:

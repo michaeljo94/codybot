@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from discord import Message
 
+from .exceptions import CommandNotFoundError
 from .parsers import CommandParser
 from .registries import CommandActionRegistry
 
@@ -22,5 +23,7 @@ class CommandBroker:
     async def run(self, message: Message):
         command = await CommandParser.get_parameters(message)
         action = self.registry.get_action(command_name=command.get("_command"))
-        if action:
+        try:
             await action.run(client=self.client, message=message)
+        except AttributeError as ax:
+            raise CommandNotFoundError() from ax
