@@ -9,20 +9,29 @@ from core.loaders import ActionLoader
 
 
 class CodyClient(Client):
-    def __init__(self, *, loop=None, **options):
+    broker: CommandBroker
+    """broker: CommandBroker
+
+   This broker hold the CommandBroker later to be used by on_message
+    """
+    _env_guild: str
+    """the active guilds name"""
+
+    async def on_ready(self):  # noqa
+        """
+        initializes the bots features if the framework has been loaded
+
+        """
         self.broker = CommandBroker.instance(self)
         self._env_guild = os.getenv("DISCORD_GUILD")
-        super().__init__(loop=loop, **options)
-
-    async def on_ready(self):
         await ActionLoader.instance()
         print("..done!")
 
-    async def on_member_join(self, member):
+    async def on_member_join(self, member):  # noqa
         await member.create_dm()
         await member.dm_channel.send(f"Willkommen {member.name}")
 
-    async def on_message(self, message):
+    async def on_message(self, message):  # noqa
         if message.author == self.user:
             return
         if message.author.bot:
