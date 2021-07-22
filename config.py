@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 INSTALLED_ACTIONS = [
+    "actions.simple_actions.GithubAction",
     "actions.simple_actions.HelloAction",
     "actions.simple_actions.HelpAction",
     "actions.simple_actions.TimeAction",

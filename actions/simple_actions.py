@@ -4,6 +4,15 @@ from datetime import datetime
 from core.actions.generic import SimpleResponseAction
 
 
+class GithubAction(SimpleResponseAction):
+    command_name = "GithubAction"
+    command_desc = "Cody on Github.com"
+    command_trigger = "!github"
+
+    def get_response(self, client, *args, **kwargs):
+        return "https://github.com/michaeljo94/codybot"
+
+
 class HelloAction(SimpleResponseAction):
     command_name = "HelloAction"
     command_desc = "Greats the user"
