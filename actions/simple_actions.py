@@ -8,6 +8,7 @@ class HelloAction(SimpleResponseAction):
     command_name = "HelloAction"
     command_desc = "Greats the user"
     command_trigger = "!hello"
+    delete_after = 10.0
 
     def get_response(self, client, *args, **kwargs):
         message = kwargs.get("message")
@@ -18,6 +19,7 @@ class HelpAction(SimpleResponseAction):
     command_name = "HelpAction"
     command_desc = "Prints this message"
     command_trigger = "!help"
+    delete_after = 10.0
 
     def get_response(self, client, *args, **kwargs):
         commands = "Commands:"
@@ -30,6 +32,7 @@ class TimeAction(SimpleResponseAction):
     command_name = "TimeAction"
     command_desc = "Prints time at bots location"
     command_trigger = "!time"
+    delete_after = 10.0
 
     def get_response(self, client, *args, **kwargs):
         now = datetime.now()

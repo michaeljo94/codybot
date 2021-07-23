@@ -10,7 +10,11 @@ class PussyAction(SimpleResponseAction):
     command_trigger = "!pussy"
 
     def get_response(self, client, *args, **kwargs):
-        return requests.get("https://aws.random.cat/meow").json().get("file")
+        response = requests.get("https://aws.random.cat/meow")
+        data = response.json()
+        file = data.get("file")
+        alt_text = "no pussy for you sir!"
+        return file if file else alt_text
 
 
 class DogAction(SimpleResponseAction):
