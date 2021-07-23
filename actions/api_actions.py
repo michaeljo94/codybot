@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
 
-from core.actions import SimpleResponseAction
+from core.actions.generic import SimpleResponseAction
 
 
 class PussyAction(SimpleResponseAction):

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from discord import Message
 
-from .actions import BaseAction
+from .actions.base import BaseAction
 from .exceptions import CommandNotFoundError
-from .parsers import CommandParser
+from .parsers.command_parsers import CommandParser
 from .registries import CommandActionRegistry
 
 

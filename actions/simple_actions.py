@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from core.actions import SimpleResponseAction
+from core.actions.generic import SimpleResponseAction
 
 
 class HelloAction(SimpleResponseAction):
