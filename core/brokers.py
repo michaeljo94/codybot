@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from discord import Message
 
-from .actions.base import BaseAction
-from .exceptions import CommandNotFoundError
-from .parsers.command_parsers import CommandParser
-from .registries import CommandActionRegistry
+from core.actions.base import BaseAction
+from core.exceptions import CommandNotFoundError
+from core.parsers import CommandParser
+from core.registries import CommandActionRegistry
 
 
 class CommandBroker:

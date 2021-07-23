@@ -3,9 +3,9 @@ import os
 
 from discord import Client
 
-from .brokers import CommandBroker
-from .exceptions import CommandNotFoundError
-from .loaders import ActionLoader
+from core.brokers import CommandBroker
+from core.exceptions import CommandNotFoundError
+from core.loaders import ActionLoader
 
 
 class CodyClient(Client):

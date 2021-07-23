@@ -2,9 +2,9 @@
 from importlib import import_module
 from typing import Optional
 
-from .exceptions import ImproperlyConfigured
-from .parsers import SettingParser
-from .settings import SettingBuilder
+from core.exceptions import ImproperlyConfigured
+from core.parsers import SettingParser
+from core.settings import SettingBuilder
 
 
 class ActionLoader:

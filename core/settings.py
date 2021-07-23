@@ -4,7 +4,7 @@ from copy import deepcopy
 from importlib import import_module
 from typing import Any
 
-from .exceptions import ImproperlyConfigured
+from core.exceptions import ImproperlyConfigured
 
 
 class Settings:

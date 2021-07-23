@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from .settings import SettingBuilder
+from core.settings import SettingBuilder
 
 
 class Logger:

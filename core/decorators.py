@@ -3,7 +3,7 @@ from logging import Logger
 
 from discord import Message
 
-from .logging import Logger
+from core.logging import Logger
 
 
 def log(func):
