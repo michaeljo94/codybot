@@ -34,6 +34,10 @@ class SettingBuilder:
 
         Raises:
             ImproperlyConfigured: if no CONFIG_MODULE is specified
+
+        Returns
+            object containing all variables and functions form CONFIG_MODULE
+
         """
         try:
             config_obj = import_module(os.environ.get("CONFIG_MODULE"))
