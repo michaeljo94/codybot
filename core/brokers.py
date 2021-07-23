@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from discord import Message
 
+from .actions import BaseAction
 from .exceptions import CommandNotFoundError
 from .parsers import CommandParser
 from .registries import CommandActionRegistry
@@ -8,9 +9,6 @@ from .registries import CommandActionRegistry
 
 class CommandBroker:
     _instance = None
-
-    def __init__(self):
-        raise RuntimeError("Call instance() instead")
 
     @classmethod
     def instance(cls, client):
@@ -20,10 +18,19 @@ class CommandBroker:
             cls.client = client
         return cls._instance
 
-    async def run(self, message: Message):
+    async def _get_action(self, message: Message) -> BaseAction:
         command = await CommandParser.get_parameters(message)
-        action = self.registry.get_action(command_name=command.get("_command"))
+        return self.registry.get_action(command_name=command.get("_command"))
+
+    async def _run_action(self, action: BaseAction, message: Message):
         try:
             await action.run(client=self.client, message=message)
         except AttributeError as ax:
             raise CommandNotFoundError() from ax
+
+    async def run(self, message: Message):
+        action = await self._get_action(message)
+        await self._run_action(action, message)
+
+    def __init__(self):
+        raise RuntimeError("Call instance() instead")

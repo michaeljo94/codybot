@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+from core.actions import BaseAction
+
+
 class CommandActionRegistry:
     _instance = None
     _registry_dict = {}
@@ -12,10 +15,10 @@ class CommandActionRegistry:
             cls._instance = cls.__new__(cls)
         return cls._instance
 
-    def get_action(self, command_name):
+    def get_action(self, command_name) -> BaseAction:
         return self._registry_dict.get(command_name)
 
-    def add_action(self, command_name, action_obj):
+    def add_action(self, command_name: str, action_obj: BaseAction):
         self._registry_dict.update({command_name: action_obj})
 
     def get_commands(self):
