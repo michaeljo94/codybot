@@ -9,7 +9,7 @@ from core.decorators import log
 
 
 class SimpleResponseAction(BaseAction):
-    delete_after: Optional[float, None] = None
+    delete_after: float
 
     @log
     async def run(self, client: Client, *args, **kwargs):

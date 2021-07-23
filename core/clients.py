@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 
-from discord import Client
+from discord import Client, Message
 
 from core.brokers import CommandBroker
 from core.exceptions import CommandNotFoundError
@@ -29,7 +29,7 @@ class CodyClient(Client):
         await member.create_dm()
         await member.dm_channel.send(f"Willkommen {member.name}")
 
-    async def on_message(self, message):  # noqa
+    async def on_message(self, message: Message):
         """event called if a member sends a message"""
         if message.author == self.user:
             return
