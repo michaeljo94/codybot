@@ -7,6 +7,15 @@ from core.logging import Logger
 
 
 def log(func):
+    """ logs a function with logging
+
+    Args:
+        func: function reference to log
+
+    Returns:
+        function output
+    """
+
     async def inner(*args, **kwargs):
         message: Message = kwargs.get("message")
         logger: Logger = await Logger.get_logger(func.__name__)

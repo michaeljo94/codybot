@@ -8,13 +8,35 @@ from core.settings import SettingBuilder
 
 
 class ActionLoader:
+    """This class is used to import and instantiate actions to be used by a Broker
+
+    The ActionLoader class behaves like a Singleton to ensure the same the
+    Application state is handled correctly
+
+    Attributes:
+        _instance (ActionLoader): instance to the ActionLoader.
+    """
+
     _instance = None
+    """ActionLoader: Instance of ActionLoader
+
+    Holds the Instance of ActionLoader if its already instantiated
+    """
 
     def __init__(self):
+        """Don't call this method
+        Raises:
+            RuntimeError: if ActionLoader is instantiated by __init__()
+        """
         raise RuntimeError("Call instance() instead")
 
     @classmethod
     async def instance(cls):
+        """Creates an Instance of ActionLoader if none is already existing
+
+        Returns:
+            Returns an instance of ActionLoader
+        """
         if cls._instance is None:
             cls._instance = cls.__new__(cls)
             await cls.register_actions()
@@ -76,6 +98,7 @@ class ActionLoader:
 
     @classmethod
     async def register_actions(cls):
+        """Registers all Actions specified in the CONFIG_MODULE in the environment variables"""
         for action in await cls._get_actions():
             module, class_ = await cls._process_action_reference(action)
             await cls._register_action(module=module, class_=class_)
