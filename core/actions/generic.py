@@ -9,7 +9,7 @@ from core.decorators import log
 
 
 class SimpleResponseAction(BaseAction):
-    delete_after: float
+    delete_after: Optional[float] = None
 
     @log
     async def run(self, client: Client, *args, **kwargs):
@@ -18,10 +18,11 @@ class SimpleResponseAction(BaseAction):
             return
 
         await message.channel.send(
-            self.get_response(client, *args, **kwargs), delete_after=self.delete_after
+            await self.get_response(client, *args, **kwargs),
+            delete_after=self.delete_after,
         )
 
-    def get_response(self, client, *args, **kwargs):
+    async def get_response(self, client, *args, **kwargs):
         return "You have overwrite SimpleResponseAction.get_message()"
 
 

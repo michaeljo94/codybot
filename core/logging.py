@@ -7,11 +7,27 @@ from core.settings import SettingBuilder
 class Logger:
     @staticmethod
     async def get_logger(logger_name):
+        """creates logger designated by logger_name
+
+        Args:
+            logger_name: name of the logging scope
+
+        Returns:
+            logging.Logger
+        """
         logger = logging.getLogger(logger_name)
         return await Logger._build_handlers(logger)
 
     @staticmethod
     async def _build_handlers(logger):
+        """sets up a given logger
+
+        Args:
+            logger: logger to configure
+
+        Returns:
+            logging.Logger
+        """
         settings = await SettingBuilder.get_settings()
 
         c_handler = logging.StreamHandler()

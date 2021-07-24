@@ -59,6 +59,9 @@ class CommandBroker:
         action = await self._get_action(message)
         await self._run_action(action, message)
 
+    async def get_commands(self):
+        yield self.registry.get_commands()
+
     def __init__(self):
         """This Class is a Singleton.
 
