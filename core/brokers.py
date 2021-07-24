@@ -12,7 +12,7 @@ class CommandBroker:
 
     @classmethod
     def instance(cls, client):
-        """instanciates the CommandBroker hence its a Singleton
+        """instantiates the CommandBroker hence its a Singleton
 
         Args:
             client(Client): discord client
