@@ -9,7 +9,7 @@
 
 This repository is where i (@michaeljo94) develop CoDy a bot for Discord. The code is provided with absolutely no
 warranty and is published under the
-[MIT license](https://raw.githubusercontent.com/michaeljo94/codybot/doc/master/LICENSE.md).
+[MIT license](https://github.com/michaeljo94/codybot/blob/master/LICENSE.md).
 
 CoDy is supposed to be a simple more or less lightweight bot framework based on
 [discord.py](https://github.com/Rapptz/discord.py) by [Rapptz](https://github.com/Rapptz). The bot will be developed out
@@ -123,4 +123,4 @@ INSTALLED_ACTIONS = [..., "actions.demo_actions.MyAction", ...]
 
 ## License
 This project is published with absolutely no warranty and no liability under the
- [MIT license](https://raw.githubusercontent.com/michaeljo94/codybot/doc/master/LICENSE.md).
+ [MIT license](https://github.com/michaeljo94/codybot/blob/master/LICENSE.md).
